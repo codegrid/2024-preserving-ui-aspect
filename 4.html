@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="format-detection" content="email=no,telephone=no,address=no">
+<title>=^.^=</title>
+<style>
+:root {
+	--to-cqw: calc( 1 / 1280 * 100cqw );
+}
+
+.Layout {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #000;
+}
+
+.Layout__Inner {
+	container-type: inline-size; /* cqw の参照先 */
+	position: relative;
+	aspect-ratio: 16 / 9;
+	width: auto;
+	height: 100%;
+	background: #fff;
+
+	@media ( max-aspect-ratio: 16 / 9 ) {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.Title {
+	font-size: calc( 64 * var( --to-cqw ) );
+}
+</style>
+</head>
+<body>
+
+<div class="Layout">
+  <div class="Layout__Inner">
+		<h1 class="Title">
+			こんにちは
+		</h1>
+  </div>
+</div>
+
+</body>
+</html>

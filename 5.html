@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="format-detection" content="email=no,telephone=no,address=no">
+<title>=^.^=</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap');
+
+:root {
+	/* --to-cqw: calc( 1 / 1280 * 100cqw ); */
+	font-family: "Noto Serif JP", serif;
+}
+
+.Layout {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+}
+
+.Layout__Inner {
+	--to-cqw: calc( 1 / 720 * 100dvh );
+	position: relative;
+	aspect-ratio: 16 / 9;
+	width: auto;
+	height: 100%;
+	background: #fff;
+
+	@media ( max-aspect-ratio: 16 / 9 ) {
+		--to-cqw: calc( 1 / 1280 * 100dvw );
+		width: 100%;
+		height: auto;
+	}
+}
+
+.StatusScreen {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: url( "./img/status-screen/bg_001.jpg" ) 0 0 / 100% 100%;
+}
+
+.StatusTitle {
+	position: absolute;
+	top: calc( 32 * var( --to-cqw ) );
+	left: 0;
+	box-sizing: border-box;
+	width: calc( 456 * var( --to-cqw ) );;
+	height: calc( 70 * var( --to-cqw ) );
+	padding-left: calc( 32 * var( --to-cqw ) );;
+	margin: 0;
+	font-size: calc( 24 * var( --to-cqw ) );
+	font-weight: 900;
+	letter-spacing: .02em;
+	color: #fff;
+	background: url( "./img/screen-title/bg_001.svg" ) no-repeat 0 100% / 100% auto;
+}
+
+.SkillList {
+	position: absolute;
+	z-index: 1;
+	top: calc( 106 * var( --to-cqw ) );
+	left: calc( 32 * var( --to-cqw ) );
+	display: flex;
+	flex-direction: column;
+	gap: calc( 8 * var( --to-cqw ) ) 0;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.SkillList li {
+	position: relative;
+	box-sizing: border-box;
+	width: calc( 430 * var( --to-cqw ) );
+	height: calc( 92 * var( --to-cqw ) );
+	padding-top: calc( 32 * var( --to-cqw ) );
+	padding-left: calc( 92 * var( --to-cqw ) );
+	font-size: calc( 24 * var( --to-cqw ) );
+	font-weight: 700;
+	background: url( "./img/skill-list/bg_001.svg" ) 0 0 / 100% 100%;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		display: block;
+		background: url( "./img/skill-list/bg_002.svg" ) 0 0 / 100% 100%;
+		pointer-events: none;
+	}
+
+	img {
+		position: absolute;
+		top: calc( 19 * var( --to-cqw ) );
+		left: calc( 7 * var( --to-cqw ) );
+		display: block;
+		width: calc( 64 * var( --to-cqw ) );
+		aspect-ratio: 1;
+	}
+}
+
+.Comment {
+	position: absolute;
+	z-index: 1;
+	top: calc( 420 * var( --to-cqw ) );
+	left: calc( 32 * var( --to-cqw ) );
+	box-sizing: border-box;
+	width: calc( 430 * var( --to-cqw ) );
+	height: calc( 190 * var( --to-cqw ) );
+	padding: calc( 26 * var( --to-cqw ) );
+	font-size: calc( 18 * var( --to-cqw ) );
+	background: url( "./img/comment/bg_001.svg" ) 0 0 / 100% 100%;
+}
+
+.Comment p {
+	margin: 0;
+}
+
+.Button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: calc( 224 * var( --to-cqw ) );
+	height: calc( 56 * var( --to-cqw ) );
+	font-size: calc( 24 * var( --to-cqw ) );
+	font-weight: 700;
+	text-decoration: none;
+	color: #fff;
+	background: url( "./img/button/bg_001.svg" ) 0 0 / 100% 100%;
+}
+
+.BackButtonContainer {
+	position: absolute;
+	top: calc( 630 * var( --to-cqw ) );
+	left: calc( 132 * var( --to-cqw ) );
+}
+
+.CharacterImage {
+	position: absolute;
+	top: calc( 45 * var( --to-cqw ) );
+	left: calc( 370 * var( --to-cqw ) );
+	width: calc( 550 * var( --to-cqw ) );
+	height: calc( 630 * var( --to-cqw ) );
+}
+
+.CharacterImage img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.Parameters {
+	position: absolute;
+	inset: 0 0 0 auto;
+	width: calc( 480 * var( --to-cqw ) );
+	padding-top: calc( 64 * var( --to-cqw ) );
+	color: #fff;
+	background: rgba( 0, 0, 0, .3 );
+}
+
+.Parameters__Name {
+	width: calc( 370 * var( --to-cqw ) );
+	height: calc( 78 * var( --to-cqw ) );
+	margin: 0 auto calc( 50 * var( --to-cqw ) );
+	font-size: calc( 24 * var( --to-cqw ) );
+	font-weight: 900;
+	letter-spacing: .1em;
+	text-align: center;
+	background: url( "./img/parameters/bg_001.svg" ) no-repeat 0 100% / 100% auto;
+}
+
+.Parameters__List {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: calc( 16 * var( --to-cqw ) );
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.Parameters__List li {
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	width: calc( 330 * var( --to-cqw ) );
+	height: calc( 64 * var( --to-cqw ) );
+	padding-inline: calc( 24 * var( --to-cqw ) );
+	font-size: calc( 24 * var( --to-cqw ) );
+	font-weight: 700;
+	background: url( "./img/parameters/bg_002.svg" ) no-repeat 0 100% / 100% auto;
+}
+
+.Parameters__Label {
+	margin: 0;
+}
+
+.Parameters__Value {
+	margin: 0;
+	text-align: right;
+}
+
+</style>
+</head>
+<body>
+
+<div class="Layout">
+  <div class="Layout__Inner">
+
+		<div class="StatusScreen">
+
+			<h1 class="StatusTitle">
+				ステータス
+			</h1>
+
+			<ul class="SkillList">
+				<li>
+					<img src="./img/skill-list/img_001.png" alt="">
+					npm run dev
+				</li>
+				<li>
+					<img src="./img/skill-list/img_002.png" alt="">
+					npm publish
+				</li>
+				<li>
+					<img src="./img/skill-list/img_003.png" alt="">
+					バグ回避 Lv1
+				</li>
+			</ul>
+
+			<div class="Comment">
+				<p>
+					Issue を立てたら閉じるところまでがお前の仕事だ。立て逃げはどこまで追う。
+				</p>
+			</div>
+
+			<div class="BackButtonContainer">
+				<a
+					href="#"
+					class="Button"
+				>
+					戻る
+				</a>
+			</div>
+
+			<div class="CharacterImage">
+				<img src="./img/character-image/yomotsu.webp" alt="">
+			</div>
+
+			<div class="Parameters">
+				<p class="Parameters__Name">
+					Yomotsu
+				</p>
+				<ul class="Parameters__List">
+					<li>
+						<p class="Parameters__Label">
+							Lv
+						</p>
+						<p class="Parameters__Value">
+							3
+						</p>
+					</li>
+					<li>
+						<p class="Parameters__Label">
+							HP
+						</p>
+						<p class="Parameters__Value">
+							1000
+						</p>
+					</li>
+					<li>
+						<p class="Parameters__Label">
+							SP
+						</p>
+						<p class="Parameters__Value">
+							600
+						</p>
+					</li>
+					<li>
+						<p class="Parameters__Label">
+							Atk
+						</p>
+						<p class="Parameters__Value">
+							120
+						</p>
+					</li>
+					<li>
+						<p class="Parameters__Label">
+							Def
+						</p>
+						<p class="Parameters__Value">
+							40
+						</p>
+					</li>
+					<li>
+						<p class="Parameters__Label">
+							Agi
+						</p>
+						<p class="Parameters__Value">
+							100
+						</p>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+  </div>
+</div>
+
+</body>
+</html>
